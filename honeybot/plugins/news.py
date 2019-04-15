@@ -28,7 +28,8 @@ class Plugin:
 
     def run(self, incoming, methods, info):
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.news':
+            msgs = info['args'][1:]
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.news':
                 methods['send'](info['address'], Plugin.news(self))
         except Exception as e:
             print('woops news plugin error ', e)
