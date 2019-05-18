@@ -23,6 +23,7 @@ class Plugin():
     game_over = False
     winner = ""
     turn = 0
+    game_created = False
     game_started = False
 
     def __init__(self):
@@ -48,11 +49,12 @@ class Plugin():
     def initGame(self,methods,info):
         '''create a new round'''
 
-        if not Plugin.game_started:
+        if not Plugin.game_created:
             Plugin.player_lst = []
             name = info["prefix"].split("!")[0]
             Plugin.initPlayer()
-            Plugin.game_started = True
+            Plugin.game_created = True
+            Plugin.game_started = False
             DECK = deck.Deck()
             BOARD = board.Board(DECK.make_board())
             POT = pot.Pot()
@@ -70,6 +72,15 @@ class Plugin():
         else:
             methods["send"](info["address"],"This round is full already")
 
+    def start(self,methods,info):
+        '''start the game'''
+        Plugin.game_started = True
+        Plugin.game_created = True
+        for player in Plugin.player_lst:
+            player.add_hand(hand.Hand(DECK.make_hand()))
+            #should send each user their hand
+        methods["send"](info["address"],"Here is the board of the game: "+BOARD.show_board())
+
     """
     RUNNING PLUGIN
     """
@@ -81,3 +92,5 @@ class Plugin():
                 Plugin.initGame(methods,info)
             elif msgs[1] == "join":
                 Plugin.initPlayer(methods,info)
+            elif msgs[1] == "start":
+                Plugin.start(methods,info)
