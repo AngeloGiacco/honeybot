@@ -94,4 +94,4 @@ class Player(object):
     def username(self):
         '''show player's name'''
 
-        return self.username
+        return self.__username
