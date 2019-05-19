@@ -19,7 +19,7 @@ from poker_assets import *
 class Plugin():
 
     starting_chips = 100
-    players = []
+    player_lst = []
     game_over = False
     winner = ""
     turn = 0
