@@ -9,7 +9,7 @@ class Player(object):
 
         self.__position_nr = nr
         self.__general_name = 'player' + str(nr)
-        self.__username =
+        self.__username = username
         self.__chips = chips
         self.__hand = []
         self.add_position(nr)
