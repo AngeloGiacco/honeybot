@@ -52,7 +52,7 @@ class Plugin():
         if not Plugin.game_created:
             Plugin.player_lst = []
             name = info["prefix"].split("!")[0]
-            Plugin.initPlayer()
+            Plugin.initPlayer(methods,info)
             Plugin.game_created = True
             Plugin.game_started = False
             DECK = deck.Deck()
