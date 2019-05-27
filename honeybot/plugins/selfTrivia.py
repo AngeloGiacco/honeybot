@@ -105,10 +105,10 @@ class Plugin:
 
         return '{}'.format(random.choice(questions))
 
-    def run(self, incoming, methods, info):
+    def run(self, incoming, methods, info, bot_info):
         try:
             msgs = info['args'][1:]
             if info['command'] == 'PRIVMSG' and msgs[0] == '.selfTrivia':
-                methods['send'](info['address'], self.trivia(self))
+                methods['send'](info['address'], Plugin.trivia(self))
         except Exception as e:
             print('Error with Self Trivia Plugin!', e)

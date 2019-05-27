@@ -22,7 +22,7 @@ class Plugin:
     def __init__(self):
         pass
 
-    def run(self, incoming, methods, info):
+    def run(self, incoming, methods, info, bot_info):
         try:
             msgs = info['args'][1:][0].split()
 
@@ -30,6 +30,7 @@ class Plugin:
                 dict = PyDictionary()
                 word = str(msgs[1])
                 defin = dict.meaning(word)['Noun']
-                methods['send'](info['address'], '{}'.format(defin))
+                for definition in defin:
+                    methods['send'](info['address'], definition)
         except Exception as e:
             print('woops plug', e)
