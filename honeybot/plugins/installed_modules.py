@@ -23,7 +23,11 @@ class Plugin:
         try:
             # if '!~' in info['prefix']:
                 # print(info)
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.installed':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.installed':
                 reqs = bot_info['required_modules']
                 not_found = []
                 for module in reqs:

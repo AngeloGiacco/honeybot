@@ -173,19 +173,22 @@ class Plugin():
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
-            if info['command'] == 'PRIVMSG' and (msgs[0] == ".bj" or msgs[0] == ".21" or msgs[0] == ".blackjack") and len(msgs) == 2:
-                if msgs[1] == "create":
-                    Plugin.initGame(methods,info)
-                elif msgs[1] == "join":
-                    Plugin.initPlayer(methods,info)
-                elif msgs[1] == "start":
-                    Plugin.start(methods,info)
-                elif msgs[1] == "hit":
-                    Plugin.hit(methods,info)
-                elif msgs[1] == "stand":
-                    Plugin.stand(methods,info)
-                else:
-                    methods["send"](info["address"],"invalid blackjack command")
+            if 'args' in info:
+                if len(info['args']) >= 2:
+                    if len(info['args'][1:][0]) >= 1:
+                        msgs = info['args'][1:][0].split()
+                        if info['command'] == 'PRIVMSG' and (msgs[0] == ".bj" or msgs[0] == ".21" or msgs[0] == ".blackjack") and len(msgs) == 2:
+                            if msgs[1] == "create":
+                                Plugin.initGame(methods,info)
+                            elif msgs[1] == "join":
+                                Plugin.initPlayer(methods,info)
+                            elif msgs[1] == "start":
+                                Plugin.start(methods,info)
+                            elif msgs[1] == "hit":
+                                Plugin.hit(methods,info)
+                            elif msgs[1] == "stand":
+                                Plugin.stand(methods,info)
+                            else:
+                                methods["send"](info["address"],"invalid blackjack command")
         except Exception as e:
             print('woops blackjack plugin error: ', e)

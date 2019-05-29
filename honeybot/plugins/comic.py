@@ -32,10 +32,11 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.comic':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.comic':
                 methods['send'](info['address'], Plugin.__comic())
         except Exception as e:
             print('woops plugin error: ', e)
-
-    
-

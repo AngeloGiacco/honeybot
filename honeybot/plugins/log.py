@@ -32,7 +32,10 @@ class Plugin:
         pass
 
     def run(self, incoming, methods, info, bot_info):
-        msgs = info['args'][1:]
+        try:
+            msgs = info['args'][1:][0].split()
+        except Exception as e:
+            pass
         try:
             if info['command'] == 'PRIVMSG':
                 # Make log file (if not existent) using current date

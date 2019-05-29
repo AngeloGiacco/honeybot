@@ -864,11 +864,14 @@ class Plugin:
     """
     RUN PLUGIN
     """
-    
+
     def run(self, incoming, methods, info, bot_info):
         try:
             if info['command'] == 'PRIVMSG':
-                msgs = info['args'][1:][0].split()
+                try:
+                    msgs = info['args'][1:][0].split()
+                except Exception as e:
+                    pass
                 if msgs[0] == '.monopoly':
                     name = info["prefix"].split("!")[0]
                     if not(Plugin.checkWon(methods,info)):#if Plugin.checkWon evaluates to true it will print winner already

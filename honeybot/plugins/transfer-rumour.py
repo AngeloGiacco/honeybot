@@ -37,7 +37,11 @@ class Plugin:
     def run(self, incoming, methods, info, bot_info):
 
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.transfer-rumour':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.transfer-rumour':
                 methods['send'](info['address'], Plugin.collect_rumour(methods,info))
         except Exception as e:
             print('woops plug', e)

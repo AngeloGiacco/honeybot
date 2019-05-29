@@ -4,7 +4,7 @@
 Dictionary Plugin
 
 [Author]
-Milad H, 
+Milad H,
 
 [About]
 Searches the python documentatioin(pydocs) for the related keyword(s)
@@ -23,7 +23,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
 
             if info['command'] == 'PRIVMSG' and msgs[0] == '.dictionary':
                 dict = PyDictionary()

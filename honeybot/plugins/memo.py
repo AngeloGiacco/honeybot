@@ -22,7 +22,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and msgs[0] == '.memo' and \
                     msgs[1] == 'add':
                 methods['mem_add']('global', 'VALUES', msgs[2], msgs[3])
@@ -36,6 +39,6 @@ class Plugin:
                     methods['send'](info['address'], val)
                 except KeyError:
                     methods['send'](info['address'], 'value not found')
-                
+
         except Exception as e:
             print('woops plug', e)

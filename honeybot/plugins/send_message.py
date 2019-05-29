@@ -28,7 +28,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and msgs[0] == '.send':
                 message = ''
                 # Take raw suffix and pull out sender name from before !
@@ -39,11 +42,11 @@ class Plugin:
 
                 # Checks for general message type
                 if len(msgs) >= 3 and msgs[2][0] != '.':
-                    message = Plugin.send_general_message(msgs, sender, 
+                    message = Plugin.send_general_message(msgs, sender,
                                                           sender_channel)
                     methods['send'](channel_destination, message)
                 # Checks for specific message type
-                elif (len(msgs) >= 6 and 
+                elif (len(msgs) >= 6 and
                       msgs[2] == '.u' and
                       msgs[4] == '.m'):
                     recipient = msgs[3]
@@ -58,7 +61,7 @@ class Plugin:
                     msg = raw_msg.strip('\n\r')
 
                     if msg.endswith('No such nick/channel'):
-                        methods['send'](info['address'], sender + 
+                        methods['send'](info['address'], sender +
                                         " isn't online.")
                     else:
                         message = Plugin.send_specific_message(

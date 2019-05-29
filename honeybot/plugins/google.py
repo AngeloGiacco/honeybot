@@ -14,9 +14,9 @@ Returns the first three links from a google search.
 returns search links
 """
 
-try: 
-    from googlesearch import search 
-except ImportError:  
+try:
+    from googlesearch import search
+except ImportError:
     print("No module named 'google' found")
 
 
@@ -25,7 +25,7 @@ class Plugin:
         pass
 
     def __google(search_term):
-        # start is what link to start with, stop is how many links to get 
+        # start is what link to start with, stop is how many links to get
         # only_standard limits it to normal links instead of ads and extra
         # links.
         return search(search_term, start=1, stop=3, \
@@ -33,8 +33,11 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
-   
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+
             if info['command'] == 'PRIVMSG' and msgs[0] == '.google':
                 # All further messages, if there are any are added to search term.
                 term = ''
@@ -45,6 +48,6 @@ class Plugin:
                         methods['send'](info['address'], link)
                 else:
                     methods['send'](info['address'], "Input error. '.google search_term'.")
-    
+
         except Exception as e:
             print('woops plugin error: ', e)

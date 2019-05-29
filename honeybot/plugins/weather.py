@@ -19,7 +19,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
 
             if info['command'] == 'PRIVMSG' and msgs[0] == '.weather':
                 api_url = f"https://api.openweathermap.org/data/2.5/weather?q={msgs[1]},{msgs[2]}" \

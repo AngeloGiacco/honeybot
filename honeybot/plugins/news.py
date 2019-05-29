@@ -28,7 +28,11 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.news':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.news':
                 for headline in Plugin.news(self):
                     methods['send'](info['address'], headline)
         except Exception as e:

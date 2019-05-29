@@ -8,7 +8,7 @@ Justin Walker
 
 [About]
 Returns a random fact.
-Facts sourced from Mental Floss 
+Facts sourced from Mental Floss
 http://mentalfloss.com/article/55443/101-amazing-facts
 
 [Commands]
@@ -28,7 +28,11 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.fact':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.fact':
                 methods['send'](info['address'], Plugin.__fact())
         except Exception as e:
             print('woops plugin error: ', e)

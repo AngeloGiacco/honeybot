@@ -71,7 +71,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:]
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and msgs[0] == '.quote':
                 methods['send'](info['address'], Plugin.quote(self))
         except Exception as e:

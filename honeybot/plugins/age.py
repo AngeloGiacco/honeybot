@@ -33,8 +33,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
-            print(len(msgs))
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and msgs[0] == '.age':
                 if len(msgs) == 4 and len(msgs[1]) < 3 and \
                    len(msgs[2]) < 3 and len(msgs[3]) == 4:

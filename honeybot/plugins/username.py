@@ -19,9 +19,9 @@ import random
 class Plugin:
     def __init__(self):
         pass
-    
+
     def gen_uname(self):
-        """Return a string containing a randomly-generated username based on an adjectives list 
+        """Return a string containing a randomly-generated username based on an adjectives list
         (p1) and a noun list (p2)"""
         p1 = ['hopeful', 'young', 'sloppy', 'magic', 'intelligent', 'uncommon', 'cute', 'dangerous'
         'innocent', 'spooky', 'crazy', 'young', 'desperate', 'epic', 'anonymous']
@@ -33,7 +33,11 @@ class Plugin:
         try:
             # if '!~' in info['prefix']:
                 # print(info)
-            msgs = info['args'][1:]
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+
             if info['command'] == 'PRIVMSG' and msgs[0] == '.uname':
                 methods['send'](info['address'], Plugin.gen_uname(self))
         except Exception as e:

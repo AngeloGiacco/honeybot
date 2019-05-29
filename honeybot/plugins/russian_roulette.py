@@ -40,7 +40,11 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.russian_roulette':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.russian_roulette':
                 methods['send'](info['address'], Plugin.risk(self, incoming, methods, info))
         except Exception as e:
             print('woops russian roulette plugin error ', e)

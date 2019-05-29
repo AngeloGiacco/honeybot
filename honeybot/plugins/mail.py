@@ -94,7 +94,10 @@ class Plugin:
         try:
             # if '!~' in info['prefix']:
                 # print(info)
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG':
                 #makes sure the first parameter is ".mail"
                 if msgs[0] == '.mail':

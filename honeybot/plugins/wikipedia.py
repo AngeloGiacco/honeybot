@@ -28,8 +28,11 @@ class Plugin:
         # if '!~' in info['prefix']:
             # print(info)
         try:
-            msgs = info['args'][1:][0].split()
-
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+                
             if info['command'] == 'PRIVMSG' and msgs[0] == '.wiki':
                 if msgs[1] == 'random':
                     print("You want the random article!")

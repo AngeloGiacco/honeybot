@@ -19,7 +19,11 @@ class Plugin:
         # if '!~' in info['prefix']:
             # print(info)
         try:
-            if info['command'] == 'PRIVMSG' and info['args'][1] == '.test':
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
+            if info['command'] == 'PRIVMSG' and msgs[0] == '.test':
                 methods['send'](info['address'], 'test ok')
         except Exception as e:
             print('woops plug', e)

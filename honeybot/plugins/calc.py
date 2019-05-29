@@ -22,7 +22,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
 
             if info['command'] == 'PRIVMSG':
                 if len(msgs) > 1:

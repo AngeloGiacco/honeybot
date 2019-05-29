@@ -42,8 +42,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
         try:
-            msgs = info['args'][1:][0].split()
-            print(msgs)
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and msgs[0] == '.riddle':
                 if len(msgs) >= 3:
                     if msgs[1] == "guess":
@@ -88,4 +90,3 @@ class Riddle:
         else:
             message = guess + " is wrong! The correct answer is "+self.riddles_dict[self.riddle]
         return message
-

@@ -23,8 +23,11 @@ class Plugin:
         try:
             # if '!~' in info['prefix']:
                 # print(info)
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG' and info['args'][1] == '.debug':
                 methods['send'](info['address'], info['prefix'])
         except Exception as e:
             print('woops plug', e)
-

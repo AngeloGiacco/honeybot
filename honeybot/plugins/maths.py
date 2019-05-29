@@ -33,8 +33,10 @@ class Plugin:
     def run(self, incoming, methods, info, bot_info):
         try:
             # if '!~' in info['prefix']:
-                # print(info)
-            msgs = info['args'][1:][0].split()
+            try:
+                msgs = info['args'][1:][0].split()
+            except Exception as e:
+                pass
             if info['command'] == 'PRIVMSG':
                 if len(msgs) > 1:
                     if msgs[0] == '.sin':

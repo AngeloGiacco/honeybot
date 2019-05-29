@@ -48,7 +48,10 @@ class Plugin:
 
     def run(self, incoming, methods, info, bot_info):
             try:
-                msgs = info['args'][1:][0].split()
+                try:
+                    msgs = info['args'][1:][0].split()
+                except Exception as e:
+                    pass
                 if info['command'] == 'PRIVMSG':
                     if len(msgs) > 1:
                         if msgs[0] == '.hangman':
@@ -114,7 +117,7 @@ class Hangman:
                 newWord += guessLetter
             elif self.display[tracker] != "-":
                 newWord += self.display[tracker]
-            else: 
+            else:
                 newWord += "-"
 
         self.display = newWord
@@ -174,7 +177,7 @@ class Hangman:
             return self.display + self.display_message
         else:
             return self.endMessage
-            
+
 
 def send(info, message):
     print(message)
