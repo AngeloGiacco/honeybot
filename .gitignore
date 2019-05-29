@@ -115,3 +115,5 @@ cmake-build-debug/
 honeybot/log/*
 # visual studio code settings
 .vscode/
+
+honeybot/plugins/.DS_Store
