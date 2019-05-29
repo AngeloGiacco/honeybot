@@ -17,7 +17,6 @@ https://Macr0Nerd.github.io
 >>> .wiki <command> <topic>
 returns a wikipedia article
 """
-#not working as usual
 import wikipedia
 
 class Plugin:

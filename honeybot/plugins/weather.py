@@ -10,7 +10,6 @@ A plugin to get the weather of a location
 >>> .weather <city> <country code>
 returns the weather
 """
-#not working as well
 
 import requests
 

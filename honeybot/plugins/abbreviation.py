@@ -85,11 +85,8 @@ class Plugin:
                 msgs = info['args'][1:][0].split()
             except Exception as e:
                 pass
-            print(msgs)
             if info['command'] == 'PRIVMSG' and msgs[0] == '.def':
-                print("hit")
                 abbreviation = msgs[1].lower()
-                print("abbreviation")
                 if abbreviation in Plugin.abbreviations.keys():
                     methods['send'](info['address'], Plugin.abbreviations[abbreviation])
                 else:
