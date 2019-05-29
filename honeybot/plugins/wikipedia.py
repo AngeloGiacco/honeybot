@@ -17,7 +17,7 @@ https://Macr0Nerd.github.io
 >>> .wiki <command> <topic>
 returns a wikipedia article
 """
-
+#not working as usual
 import wikipedia
 
 class Plugin:
@@ -32,7 +32,7 @@ class Plugin:
                 msgs = info['args'][1:][0].split()
             except Exception as e:
                 pass
-                
+
             if info['command'] == 'PRIVMSG' and msgs[0] == '.wiki':
                 if msgs[1] == 'random':
                     print("You want the random article!")

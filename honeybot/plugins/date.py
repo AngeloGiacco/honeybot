@@ -35,7 +35,7 @@ class Plugin:
                 msgs = info['args'][1:][0].split()
             except Exception as e:
                 pass
-            if info['command'] == 'PRIVMSG' and msgs[0] == '.date today':
+            if info['command'] == 'PRIVMSG' and " ".join(msgs[:2]) == '.date today':
                 methods['send'](info['address'], Plugin.__date())
         except Exception as e:
             print('woops plug', e)

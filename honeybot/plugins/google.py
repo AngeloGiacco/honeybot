@@ -13,7 +13,7 @@ Returns the first three links from a google search.
 >>> .google <<search term>>
 returns search links
 """
-
+#not responding now
 try:
     from googlesearch import search
 except ImportError:
