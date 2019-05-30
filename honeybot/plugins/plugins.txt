@@ -1,6 +1,7 @@
 abbreviation.py
 age.py
 bitcoin.py
+blackjack.py
 caesar_cipher.py
 calc.py
 channeljoin.py
