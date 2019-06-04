@@ -1,15 +1,13 @@
-import importlib
+import configparser
 
-reqs = []
-with open('../requirements.txt') as f:
-    reqs = f.read().split('\n')
+memory_reader = configparser.ConfigParser()
+memory_reader.read('memory/global.txt')
 
+memory_reader['VALUES']['b'] = '2'
+memory_reader['VALUES']['c'] = '3'
+memory_reader.remove_option('VALUES', 'b')
 
-reqs = [m.split('==')[0] for m in reqs if m]
+print(memory_reader['VALUES']['z'])
 
-for module in reqs:
-    try:
-        importlib.import_module(module)
-    except ModuleNotFoundError as e:
-        print('not found:', module)
-print(reqs)
+with open('memory/global.txt', 'w') as configfile:
+    memory_reader.write(configfile)

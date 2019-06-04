@@ -20,7 +20,7 @@ Psst. since i learnt py through this bot, we decided to keep a new-comers friend
 
 ## 📌 Contributing Countries
 
-🇲🇺 🇺🇸 🇨🇦 🇦🇷 🇮🇳
+🇲🇺 🇺🇸 🇨🇦 🇦🇷 🇮🇳 🇬🇧 🇬🇬 🇧🇷 🇸🇽
 
 ## 📨 Follow the project on CodeTriage for updates!
 
@@ -46,6 +46,10 @@ who have never contributed to a project before, and Abdur-Rahmaan Janhangeer was
 
 > HoneyBot is my first open source project and I had never worked with an IRC before. For school I was required to contribute to projects, but it was always so intimidating to me. I had always heard it gets easier once you've gotten over the fear wall, and that's what HoneyBot did for me. Excellent readme and quick feedback allowed me to make my first plugin. Now I've made many contributions, and look forward to any new issues I can get my hands on. Abdur-Rahmaan Janhangeer has been extremely helpful and I owe him and this project a lot for getting me into the open source world.
 
+[@mboekhold](https://github.com/mboekhold)
+
+> HoneyBot is a very friendly and welcoming community. They provided quick feedback and I would defenitely recommend this project to newcomers to give them that first boost on contributing to open source. HoneyBot helps you all the way there to issuing your first PR, step by step. I contributed a comic plugin, and I was thankful for meeting all the friendly and passionate people who are active in this community.
+
 ## ✂ Current Features
  * 🍬 OOP architecture
  * 🛰️ keyword parameters
@@ -69,7 +73,7 @@ who have never contributed to a project before, and Abdur-Rahmaan Janhangeer was
 - 🔣 password generator by [@iamnishant14](https://github.com/iamnishant14) - the name tells it all
 - 🐜 debug by [@Abdur-rahmaanJ](https://github.com/Abdur-rahmaanJ) - prints all parameters passed to bot
 - 📚 wikipedia by [@Macr0Nerd](https://github.com/Macr0Nerd) - returns a wikipedia article
-- 🗿 translate by Ahmed Deeb - google translate plugin
+- 🗿 translate by [@a-deeb](https://github.com/a-deeb) - google translate plugin
 - 📑 test by [@Abdur-rahmaanJ](https://github.com/Abdur-rahmaanJ) - runs tests
 - ⛅️ weather by [@Macr0Nerd](https://github.com/Macr0Nerd) - returns weather info for a given location
 - ✉️ mail by [@TannerFry](https://github.com/TannerFry) - send emails within the chat
@@ -82,7 +86,18 @@ who have never contributed to a project before, and Abdur-Rahmaan Janhangeer was
 - 🚪 joins by [@RiceAbove](https://github.com/RiceAbove) - greets everyone who joins the channel
 - 📅 date by [@RiceAbove](https://github.com/RiceAbove) - posts the current date
 - 🕵️‍ riddle by [@AngeloGiacco](https://github.com/AngeloGiacco) - returns a random riddle
+- 🗞 news by [@AngeloGiacco](https://github.com/AngeloGiacco) - gets the top 10 headlines from bbc world news
+- 📝 horoscope by [@AngeloGiacco](https://github.com/AngeloGiacco) - gets your daily horoscope for your starsign
+- 💵 currency converter by [@AngeloGiacco](https://github.com/AngeloGiacco) - converts currencies
+- 🔫 russian_roulette by [@AngeloGiacco](https://github.com/AngeloGiacco) - may or may not kick you off the channel
+- 🏨 monopoly by [@AngeloGiacco](https://github.com/AngeloGiacco) - Honeybot now supports the world's worst game!
+- ⚽️ transfer_rumour by [@AngeloGiacco](https://github.com/AngeloGiacco) - shows the day's transfer rumours
+- 🃏 blackjack/21 by [@AngeloGiacco](https://github.com/AngeloGiacco) - play 21 on honeybot!
 - 🎲 roll by [@GlennToms](https://github.com/GlennToms) - rolls a dice
+- ❓ help by [@edumello](https://github.com/edumello) - show link to plugin's information page
+- ✅ channeljoin by [@marceloyb](https://github.com/marceloyb) - join command for bot
+- :page_with_curl: comic by [@mboekhold](https://github.com/mboekhold) - returns a random comic
+
 
 ## 🔧 Plugins Development
 
@@ -109,7 +124,7 @@ class Plugin:
     def __init__(self):
         pass
 
-    def run(self, incoming, methods, info):
+    def run(self, incoming, methods, info, bot_info):
         try:
             if info['command'] == 'PRIVMSG' and info['args'][1] == '.hi':
                 methods['send'](info['address'], 'hooo')
